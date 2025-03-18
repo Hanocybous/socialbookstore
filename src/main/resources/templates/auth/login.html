@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <style>
+        body, html {
+            height: 100%;
+            margin-top: 10%;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            width: 30%;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+
+    <title>Social Bookstore Login</title>
+</head>
+
+<body>
+
+<div class="container">
+    <form th:action="@{/login}" method="POST">
+        <h3 th:text="Login"></h3>
+        <label>
+            <input type="text" name="username" th:placeholder="Username" />
+        </label> <br /><br />
+        <label>
+            <input type="password" th:placeholder="Password" name="password"/>
+        </label> <br /><br />
+        <button type="Submit" class="btn btn-info col-2"> Login </button>
+        <a th:href="@{register}" class="btn btn-primary col-2"> Register </a><br />
+
+        <div th:if="${param.error}"><p>Username or Password is invalid.</p></div> <br/>
+
+        <span th:utext="${successMessage}"></span>
+    </form>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxw1vOc5KZl5yZx8bT0E7a9xKtfwZw8yGJ8AuyKgk9O2xXrL" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-7fMz8Xtp4zDZg4Rb8N3mZJf3Jgs5zO6+8jOz6bkeW6Jyo/6bJjZISq6vFZcN5Fa" crossorigin="anonymous"></script>
+
+</body>
+</html>

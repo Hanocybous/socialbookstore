@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Book Search Form</title>
+</head>
+
+<body>
+<div class="container text-center">
+	<h3>Book Search Form</h3>
+	<hr>
+
+	<form action="#" th:action="@{/user/search_offer}" th:object="${book}" method="POST">
+		<!-- Add hidden form field to handle update -->
+		<input type="hidden" th:field="*{id}" />
+
+		<input type="text" th:field="*{title}" class="form-control mb-4 col-4 mx-auto" placeholder="Title">
+		<input type="text" th:field="*{authors}" class="form-control mb-4 col-4 mx-auto" placeholder="Authors">
+
+		<div class="form-group">
+			<label for="html">Book Category</label>
+			<ul class="list-unstyled">
+				<li th:each="acategory: ${categories}">
+					<input type="radio" th:field="*{category}" th:value="${acategory.name}" id="category_${acategory.name}" />
+					<label th:for="'category_' + ${acategory.name}" th:text="${acategory.name}"></label>
+				</li>
+			</ul>
+		</div>
+
+		<div class="form-group">
+			<label for="html">Search Strategy</label>
+			<ul class="list-unstyled">
+				<li th:each="astrategy: ${strategies}">
+					<input type="radio" th:field="*{searchStrategy}" th:value="${astrategy}" id="strategy_${astrategy}" />
+					<label th:for="'strategy_' + ${astrategy}" th:text="${astrategy}"></label>
+				</li>
+			</ul>
+		</div>
+
+		<button type="submit" class="btn btn-info col-2">Search</button>
+	</form>
+
+	<hr>
+	<a th:href="@{/user/dashboard}" class="btn btn-secondary">Back to user dashboard</a>
+</div>
+</body>
+
+</html>

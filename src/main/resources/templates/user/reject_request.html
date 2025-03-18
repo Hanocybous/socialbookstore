@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Reject Book Request</title>
+</head>
+
+<body>
+<div class="container text-center">
+    <h3>Reject Book Request</h3>
+    <hr>
+
+    <!-- Display requesting user's full name -->
+    <p>Are you sure you want to reject the book request from <span th:text="${requesting_user.fullName}"></span>?</p>
+
+    <!-- Form to handle rejection of book request -->
+    <form th:action="@{/user/reject_request}" method="post">
+        <input type="hidden" th:name="username" th:value="${requesting_user.username}" />
+        <input type="hidden" th:name="bookId" th:value="${book_id}" />
+        <button type="submit" class="btn btn-danger">Reject Request</button>
+    </form>
+
+    <hr>
+
+    <!-- Back button to the list of requesting users -->
+    <a th:href="@{/user/requesting_users(book_id=${book_id})}" class="btn btn-secondary">Back to Requesting Users</a>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGaHfIlYFf/8ABoFf1p5p5Jp4" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy1xVLMp5YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+</body>
+</html>
